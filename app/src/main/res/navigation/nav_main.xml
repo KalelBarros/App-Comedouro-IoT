@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/menu_Dispositivos">
+
+    <fragment
+        android:id="@+id/menu_Dispositivos"
+        android:name="com.example.nutripatas.fragments.DispositivoFragment"
+        android:label="fragment_dispositivo"
+        tools:layout="@layout/fragment_dispositivo" >
+        <action
+            android:id="@+id/action_dispositivoFragment_to_configuracoesFragment"
+            app:destination="@id/page_Configurações" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/page_Monitoramento"
+        android:name="com.example.nutripatas.fragments.MonitoramentoFragment"
+        android:label="fragment_monitoramento"
+        tools:layout="@layout/fragment_monitoramento" >
+        <action
+            android:id="@+id/action_monitoramentoFragment_to_dispositivoFragment"
+            app:destination="@id/menu_Dispositivos" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/page_Configurações"
+        android:name="com.example.nutripatas.fragments.ConfiguracoesFragment"
+        android:label="fragment_configuracoes"
+        tools:layout="@layout/fragment_configuracoes" />
+</navigation>

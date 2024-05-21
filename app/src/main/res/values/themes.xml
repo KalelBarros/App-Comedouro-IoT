@@ -3,6 +3,18 @@
     <style name="Base.Theme.NutriPatas" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:navigationBarColor">#0097B2</item>
+        <item name="android:statusBarColor">#0097B2</item>
+        <item name="android:windowLightNavigationBar">true</item> <!-- Muda a cor dos botões na barra inferior -->
+        <item name="android:windowLightStatusBar">false</item> <!-- Muda a cor dos itens na barra superior -->
+    </style>
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.App.BottomNavigationView" parent="">
+        <item name="colorOnPrimary">#FFFFFF</item>
     </style>
 
     <style name="Theme.NutriPatas" parent="Base.Theme.NutriPatas" />
