@@ -10,10 +10,4 @@
         android:id="@+id/page_Monitoramento"
         android:icon="@drawable/monitoramento"
         android:title="Monitoramento"/>
-
-    <item
-        android:id="@+id/page_Configurações"
-        android:icon="@drawable/configuracoes"
-        android:title="Configurações"/>
-
 </menu>

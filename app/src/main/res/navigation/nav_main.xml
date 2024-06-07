@@ -11,8 +11,8 @@
         android:label="fragment_dispositivo"
         tools:layout="@layout/fragment_dispositivo" >
         <action
-            android:id="@+id/action_dispositivoFragment_to_configuracoesFragment"
-            app:destination="@id/page_Configurações" />
+            android:id="@+id/action_dispositivoFragment_to_MonitoramentoFragment"
+            app:destination="@id/page_Monitoramento" />
     </fragment>
 
     <fragment
@@ -25,9 +25,4 @@
             app:destination="@id/menu_Dispositivos" />
     </fragment>
 
-    <fragment
-        android:id="@+id/page_Configurações"
-        android:name="com.example.nutripatas.fragments.ConfiguracoesFragment"
-        android:label="fragment_configuracoes"
-        tools:layout="@layout/fragment_configuracoes" />
 </navigation>
