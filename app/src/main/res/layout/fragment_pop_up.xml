@@ -5,15 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#0097B2"
+    android:background="@drawable/caixa_popup"
     tools:context=".PopUpFragment">
 
     <TextView
         android:id="@+id/titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Adicionar dispositivo"
-        android:textSize="30dp"
+        android:text="Adicionar Alimentador"
+        android:textSize="25dp"
         android:layout_marginTop="5dp"
         android:textColor="@color/white"
         android:textStyle="bold"
@@ -21,57 +21,143 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
-    <EditText
-        android:id="@+id/nome"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+    <TextView
+        android:id="@+id/txt_nome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Insira um nome para o alimentador"
+        android:textColor="@color/white"
         android:layout_marginTop="20dp"
-        android:layout_marginHorizontal="35dp"
-        android:hint="Digite o nome para o dispositivo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/titulo" />
-
-    <EditText
-        android:id="@+id/ip"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginHorizontal="35dp"
-        android:layout_marginTop="20dp"
-        android:hint="Digite o IP do dispositivo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/nome"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintTop_toBottomOf="@id/titulo"
+        app:layout_constraintBottom_toTopOf="@id/caixa_nome"
+        app:layout_constraintStart_toStartOf="@id/caixa_nome"
         />
 
-    <EditText
-        android:id="@+id/intervalo"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/caixa_nome"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="55dp"
         android:layout_marginHorizontal="35dp"
-        android:layout_marginTop="20dp"
-        android:hint="Intervalo entre as refeições (horas)"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:hint="Nome"
+        android:textColorHint="#80FFFFFF"
+        app:hintTextColor="#80FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/txt_nome"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ip"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <EditText
+            android:id="@+id/nome"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:singleLine="true"
+            android:padding="10dp"
+            android:background="@drawable/caixa_input"
+            android:inputType="text"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/txt_ip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Insira a porção de ração em gramas"
+        android:textColor="@color/white"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintTop_toBottomOf="@id/caixa_nome"
+        app:layout_constraintBottom_toTopOf="@id/caixa_porção"
+        app:layout_constraintStart_toStartOf="@id/caixa_nome"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/caixa_porção"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginHorizontal="35dp"
+        android:hint="Porção"
+        android:textColorHint="#80FFFFFF"
+        app:hintTextColor="#80FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/txt_ip"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <EditText
+            android:id="@+id/porção"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/caixa_input"
+            android:singleLine="true"
+            android:padding="10dp"
+            android:inputType="number"
+            android:maxLength="3"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/txt_intervalo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Insira o intervalo entre as refeições"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintTop_toBottomOf="@id/caixa_intervalo"
+        app:layout_constraintBottom_toTopOf="@id/caixa_porção"
+        app:layout_constraintStart_toStartOf="@id/caixa_intervalo"
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/caixa_intervalo"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginHorizontal="35dp"
+        android:hint="Intervalo (minutos)"
+        android:textColorHint="#80FFFFFF"
+        app:hintTextColor="#80FFFFFF"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@id/txt_intervalo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+        <EditText
+            android:id="@+id/intervalo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:singleLine="true"
+            android:background="@drawable/caixa_input"
+            android:padding="10dp"
+            android:inputType="number"
+            android:maxLength="2"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bt_cancelar"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Cancelar"
-        android:layout_marginTop="10dp"
+        android:textColor="@color/white"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/botao"
+        android:textSize="13dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/bt_confirmar"
-        app:layout_constraintTop_toBottomOf="@id/intervalo"/>
+        app:layout_constraintTop_toBottomOf="@id/caixa_intervalo"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/bt_confirmar"
-        android:layout_width="100dp"
-        android:layout_height="60dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Confirmar"
+        android:textColor="#FFFFFF"
         android:textSize="13dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="15dp"
+        android:background="@drawable/botao"
         app:layout_constraintStart_toEndOf="@id/bt_cancelar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/bt_cancelar"

@@ -33,7 +33,7 @@ public class AlimentadorAdapter extends RecyclerView.Adapter<AlimentadorAdapter.
     public void onBindViewHolder(@NonNull AlimentadorViewHolder holder, int position) {
         Alimentador alimentador = alimentadorList.get(position);
         holder.binding.Nome.setText(alimentador.getNome());
-        holder.binding.Ip.setText(alimentador.getIP());
+        holder.binding.porO.setText(String.valueOf(alimentador.getPorçãoRação()));
         holder.binding.Intervalo.setText(String.valueOf(alimentador.getIntervaloRefeição()));
     }
 

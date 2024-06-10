@@ -9,7 +9,7 @@
         android:id="@+id/menu_Dispositivos"
         android:name="com.example.nutripatas.fragments.DispositivoFragment"
         android:label="fragment_dispositivo"
-        tools:layout="@layout/fragment_dispositivo" >
+        tools:layout="@layout/fragment_alimentador" >
         <action
             android:id="@+id/action_dispositivoFragment_to_MonitoramentoFragment"
             app:destination="@id/page_Monitoramento" />
