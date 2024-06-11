@@ -1,19 +1,9 @@
 package com.example.nutripatas.fragments;
 
-import static android.content.Context.MODE_PRIVATE;
-import static android.database.sqlite.SQLiteDatabase.openOrCreateDatabase;
-import static android.provider.Contacts.SettingsColumns.KEY;
-
-import static java.sql.Types.INTEGER;
-import static java.text.Collator.PRIMARY;
-
 import android.Manifest;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.pm.PackageManager;
-import android.database.sqlite.SQLiteDatabase;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.net.wifi.SupplicantState;
@@ -29,18 +19,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.example.nutripatas.Adapter.AlimentadorAdapter;
 import com.example.nutripatas.Classes.Alimentador;
 import com.example.nutripatas.databinding.FragmentAlimentadorBinding;
 import com.example.nutripatas.databinding.FragmentPopUpBinding;
-import com.example.nutripatas.fragments.MonitoramentoFragment;
-
 import java.util.ArrayList;
 
 public class DispositivoFragment extends Fragment {
 
-    private SQLiteDatabase bancoDados;
     private FragmentAlimentadorBinding binding;
     private AlimentadorAdapter alimentadorAdapter;
     public static ArrayList<Alimentador> alimentadorList = new ArrayList<>();
@@ -57,21 +43,6 @@ public class DispositivoFragment extends Fragment {
             ActivityCompat.requestPermissions(getActivity(),
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION},
                     PERMISSIONS_REQUEST_CODE_ACCESS_FINE_LOCATION);
-        }
-        criarBancoDados();
-    }
-
-    public void criarBancoDados()
-    {
-        try
-        {
-            bancoDados = openOrCreateDatabase("Alimentador",null,null);
-            bancoDados.execSQL("CREATE TABLE IF NOT EXISTS Alimentador(" +
-                    " id INTEGER PRIMARY KEY AUTOINCREMENT" +
-                    " , nome VARCHAR)");
-        }catch (Exception e)
-        {
-            e.printStackTrace();
         }
     }
 
@@ -120,6 +91,7 @@ public class DispositivoFragment extends Fragment {
             return "Permissão de localização não concedida";
         }
     }
+
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -152,19 +124,20 @@ public class DispositivoFragment extends Fragment {
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (nomeAlimentador.getText().toString().isEmpty() ||
-                        porçãoRação.getText().toString().isEmpty() ||
-                        intervaloRefeicaoAlimentador.getText().toString().isEmpty()) {
-                    dialog.dismiss();
-                } else {
-                    Alimentador a = new Alimentador(
+                if (!nomeAlimentador.getText().toString().isEmpty() &&
+                        !porçãoRação.getText().toString().isEmpty() &&
+                        !intervaloRefeicaoAlimentador.getText().toString().isEmpty()) {
+                    Alimentador alimentador = new Alimentador(
                             nomeAlimentador.getText().toString(),
                             Integer.parseInt(porçãoRação.getText().toString()),
                             Integer.parseInt(intervaloRefeicaoAlimentador.getText().toString())
                     );
-                    alimentadorList.add(a);
+                    alimentadorList.add(alimentador);
                     alimentadorAdapter.notifyDataSetChanged();
-                    MonitoramentoFragment.getDados();
+
+                    // Adicionar o novo Alimentador à dadosList do MonitoramentoFragment
+                    MonitoramentoFragment.dadosList.add(alimentador);
+                    // Você pode atualizar o adaptador do RecyclerView do MonitoramentoFragment se necessário
                 }
                 dialog.dismiss();
             }
