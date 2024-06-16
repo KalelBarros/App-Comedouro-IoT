@@ -32,29 +32,12 @@ public class Alimentador
         this.porçãoRação = porçãoRação;
     }
 
-    public void discoverESP32IP(Context context)
-    {
-        executorService.execute(() ->
-        {
-            try
-            {
-                JmDNS jmdns = JmDNS.create(InetAddress.getByName("0.0.0.0"));
-                ServiceInfo[] services = jmdns.list("_http._tcp.local.");
-                for (ServiceInfo serviceInfo : services) {
-                    if (serviceInfo.getName().equals("Comedouro"))
-                    {
-                        esp32IP = serviceInfo.getInetAddresses()[0].getHostAddress();
-                        Toast.makeText(context, "ESP32 encontrado em: " + esp32IP, Toast.LENGTH_SHORT).show();
-                        break;
-                    }
-                }
-                jmdns.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        });
-    }
 
+
+    public void setQuantidadeReservatorio(String res)
+    {
+        quantidadeReservatorio = Integer.parseInt(res);
+    }
     public int getIntervalo()
     {
         return intervaloRefeição;

@@ -14,9 +14,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        app:layout_constraintBottom_toTopOf="@id/view5">
 
-        <androidx.cardview.widget.CardView
+        <ImageView
             android:id="@+id/cardview"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -24,14 +24,18 @@
             android:layout_marginStart="10dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:backgroundTint="#00000000">
+            android:background="@drawable/dispositivos"/>
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/dispositivos"/>
-
-        </androidx.cardview.widget.CardView>
+        <View
+            android:id="@+id/view4"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/white"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cardview"/>
 
         <TextView
             android:id="@+id/nome_alimentador"
@@ -45,23 +49,15 @@
             app:layout_constraintBottom_toBottomOf="@id/cardview"
             app:layout_constraintStart_toEndOf="@id/cardview"/>
 
-        <androidx.cardview.widget.CardView
+        <ImageView
             android:id="@+id/cardview2"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
-            app:layout_constraintTop_toBottomOf="@id/cardview"
+            app:layout_constraintTop_toBottomOf="@id/view4"
             app:layout_constraintStart_toStartOf="parent"
-            android:backgroundTint="#00000000">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/baseline_wifi_24"/>
-
-        </androidx.cardview.widget.CardView>
-
+            android:background="@drawable/baseline_wifi_24"/>
         <TextView
             android:id="@+id/status"
             android:layout_width="wrap_content"
@@ -74,22 +70,15 @@
             app:layout_constraintBottom_toBottomOf="@id/cardview2"
             app:layout_constraintStart_toEndOf="@id/cardview2"/>
 
-        <androidx.cardview.widget.CardView
+        <ImageView
             android:id="@+id/cardview3"
             android:layout_width="30dp"
             android:layout_height="30dp"
-            android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
-            app:layout_constraintTop_toBottomOf="@id/cardview2"
-            app:layout_constraintStart_toStartOf="parent"
-            android:backgroundTint="#00000000">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/intervalo"/>
-
-        </androidx.cardview.widget.CardView>
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/view4"
+            app:layout_constraintStart_toEndOf="@id/status"
+            android:background="@drawable/intervalo"/>
 
         <TextView
             android:id="@+id/txt_intervalorefeicao"
@@ -103,7 +92,7 @@
             app:layout_constraintBottom_toBottomOf="@id/cardview3"
             app:layout_constraintStart_toEndOf="@id/cardview3"/>
 
-        <androidx.cardview.widget.CardView
+        <ImageView
             android:id="@+id/cardview4"
             android:layout_width="30dp"
             android:layout_height="30dp"
@@ -111,14 +100,7 @@
             android:layout_marginStart="10dp"
             app:layout_constraintTop_toBottomOf="@id/cardview3"
             app:layout_constraintStart_toStartOf="parent"
-            android:backgroundTint="#00000000">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/porcao"/>
-
-        </androidx.cardview.widget.CardView>
+            android:background="@drawable/porcao"/>
 
         <TextView
             android:id="@+id/txt_porcao"
@@ -132,24 +114,16 @@
             app:layout_constraintBottom_toBottomOf="@id/cardview4"
             app:layout_constraintStart_toEndOf="@id/cardview4"/>
 
-        <androidx.cardview.widget.CardView
+        <ImageView
             android:id="@+id/cardview5"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginTop="10dp"
             android:layout_marginStart="10dp"
             android:layout_marginBottom="15dp"
-            app:layout_constraintTop_toBottomOf="@id/cardview4"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:backgroundTint="#00000000">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/quantidade_reservatorio"/>
-
-        </androidx.cardview.widget.CardView>
+            app:layout_constraintTop_toBottomOf="@id/cardview2"
+            app:layout_constraintStart_toEndOf="@id/txt_porcao"
+            android:background="@drawable/quantidade_reservatorio"/>
 
         <TextView
             android:id="@+id/txt_quantidadeReservatorio"
@@ -163,10 +137,36 @@
             app:layout_constraintBottom_toBottomOf="@id/cardview5"
             app:layout_constraintStart_toEndOf="@id/cardview5"/>
 
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bt_alterar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Alterar"
+            android:background="@drawable/botao"
+            app:layout_constraintTop_toBottomOf="@id/cardview4"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/bt_excluir"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/bt_excluir"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Excluir"
+            android:background="@drawable/botao"
+            app:layout_constraintStart_toEndOf="@id/bt_alterar"
+            app:layout_constraintBottom_toBottomOf="@id/bt_alterar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/bt_alterar"
+            />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
+        android:id="@+id/view5"
         android:layout_width="match_parent"
         android:layout_height="2dp"
         android:background="#00FFFFFF"

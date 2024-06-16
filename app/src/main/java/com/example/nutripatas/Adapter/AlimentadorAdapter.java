@@ -35,6 +35,7 @@ public class AlimentadorAdapter extends RecyclerView.Adapter<AlimentadorAdapter.
         holder.binding.Nome.setText(alimentador.getNome());
         holder.binding.porO.setText(String.valueOf(alimentador.getPorçãoRação()));
         holder.binding.Intervalo.setText(String.valueOf(alimentador.getIntervaloRefeição()));
+        holder.binding.quantidadeReservatorio.setText(String.valueOf(alimentador.getQuantidadeReservatorio()));
     }
 
     @Override
